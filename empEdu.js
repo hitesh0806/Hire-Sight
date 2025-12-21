@@ -1,28 +1,9 @@
+import { Data } from "./empPers.js";
+import { pushToArray } from "./saveData.js";
+
 let educationQualification;
 let experience;
 let roles;
-
-let Data = JSON.parse(localStorage.getItem('data'));
-if(!Data){
-   Data = {
-        personalData : {
-            Name : undefined,
-            Contact : undefined,
-            Address : undefined,
-            Email : undefined,
-            Password : undefined
-        },
-        educationalData : {
-            Education_Qualification : undefined,
-            _10_ : undefined,
-            _10_2_ : undefined,
-            UG : undefined,
-            PG : undefined,
-            Experience : undefined,
-            Role : undefined
-        }
-    }
-}
 
 document.querySelectorAll('.eduQual').forEach((button) => {
     button.addEventListener('click', () => {
@@ -102,11 +83,12 @@ document.querySelectorAll('.exp_amt').forEach((button) => {
 })
 }
 
-document.querySelector('.js-createBtn').
-addEventListener('click', () => {
+let createBtn = document.querySelector('.js-createBtn');
+if(createBtn){
+createBtn.addEventListener('click', () => {
 
     document.querySelectorAll('.edu_details').forEach((input) => {
-        const grade = input.dataset.grade; // '10', '10+2', 'UG', 'PG'
+        const grade = input.dataset.grade;
         const value = input.value;
 
         if(grade === '10'){
@@ -128,12 +110,17 @@ addEventListener('click', () => {
     Data.educationalData.Experience = experience;
     Data.educationalData.Role = roles;
 
-    console.log(Data.educationalData);
-
     localStorage.setItem('data', JSON.stringify(Data));
-})
 
-console.log(Data);
+    console.log('Data.educationalData',Data.educationalData);
+    console.log('Data',Data);
+
+    pushToArray(Data);
+
+})
+}
+
+//console.log(Data);
 
 
 
