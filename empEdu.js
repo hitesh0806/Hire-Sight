@@ -119,8 +119,3 @@ createBtn.addEventListener('click', () => {
 
 })
 }
-
-//console.log(Data);
-
-
-

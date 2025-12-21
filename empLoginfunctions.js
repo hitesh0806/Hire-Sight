@@ -16,6 +16,7 @@ function login(){
             if(Name === element.personalData.Name && 
                 Password === element.personalData.Password){
                 console.log('user match found');
+                localStorage.setItem('loggedInData', JSON.stringify(element));
                 window.location.href = 'empHomePage.html';
                 found = true;
             }

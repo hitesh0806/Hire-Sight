@@ -1,6 +1,3 @@
-/*import {Data} from './empPers.js'
-console.log(Data);*/
-
 const dataArray = JSON.parse(localStorage.getItem('dataArray')) || [];
 
 export function pushToArray(value){
@@ -10,4 +7,3 @@ export function pushToArray(value){
 
     localStorage.setItem('dataArray', JSON.stringify(dataArray));
 }
-//pushToArray();

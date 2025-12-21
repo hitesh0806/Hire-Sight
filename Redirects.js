@@ -1,6 +1,3 @@
-/*function redirectTo(location){
-    window.location.href = location;
-}*/
 document.querySelectorAll('.js-redirectTo').forEach((button) => {
     button.addEventListener('click', () => {
         const redirectId = button.dataset.redirectId;
