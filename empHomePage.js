@@ -11,7 +11,7 @@ document.querySelector('.js-content').innerHTML =
     <div class = 'js-profile-section'></div>
     <label>Connections:</label>
     <h4>0</h4>
-    <button>Messages</button>
+    <button>Invitations</button>
 </div>
 `;
 

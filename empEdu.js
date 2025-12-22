@@ -1,6 +1,8 @@
 import { Data } from "./empPers.js";
 import { pushToArray } from "./saveData.js";
 
+export const dataArray = JSON.parse(localStorage.getItem('dataArray')) || [];
+
 let educationQualification;
 let experience;
 let roles;
@@ -115,7 +117,7 @@ createBtn.addEventListener('click', () => {
     console.log('Data.educationalData',Data.educationalData);
     console.log('Data',Data);
 
-    pushToArray(Data);
+    pushToArray(dataArray, Data, 'dataArray');
 
 })
 }

@@ -6,9 +6,8 @@ document.querySelectorAll('.js-redirectTo').forEach((button) => {
     })
 })
 
-let viewBtn = document.querySelector('.js-profileView-test');
-if(viewBtn){
-viewBtn.addEventListener('click', () => {
+if(document.querySelector('.js-profileView-test')){
+document.querySelector('.js-profileView-test').addEventListener('click', () => {
     console.log(JSON.parse(localStorage.getItem('dataArray')));
 })
 }

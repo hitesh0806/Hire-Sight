@@ -1,9 +1,9 @@
-const dataArray = JSON.parse(localStorage.getItem('dataArray')) || [];
-
-export function pushToArray(value){
-    dataArray.push(value);
+export function pushToArray(arrayName, value, localStorageKey){
+    arrayName.push(value);
     console.log('value', value);
-    console.log('dataArray', dataArray);
+    console.log('dataArray', arrayName);
 
-    localStorage.setItem('dataArray', JSON.stringify(dataArray));
+    localStorage.setItem(localStorageKey, JSON.stringify(arrayName));
 }
+
+
