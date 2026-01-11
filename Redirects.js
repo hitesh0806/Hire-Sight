@@ -11,3 +11,9 @@ document.querySelector('.js-profileView-test').addEventListener('click', () => {
     console.log(JSON.parse(localStorage.getItem('dataArray')));
 })
 }
+
+if(document.querySelector('.js-profileView-test-buisness')){
+document.querySelector('.js-profileView-test-buisness').addEventListener('click', () => {
+    console.log(JSON.parse(localStorage.getItem('buisDataArray')));
+})
+}

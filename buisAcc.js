@@ -2,7 +2,7 @@ import { pushToArray } from "./saveData.js";
 
 const buisDataArray = JSON.parse(localStorage.getItem('buisDataArray')) || [];
 
-let buisData = JSON.parse(localStorage.getItem('buisData'));
+let buisData = JSON.parse(localStorage.getItem('buisDataArray'));
 if(!buisData){
 buisData = {
     companyName : undefined,
@@ -41,9 +41,9 @@ document.querySelector('.js-createBtn').addEventListener('click', () => {
         console.log(dataType,value);
     })
 
-    localStorage.setItem('buisData', JSON.stringify(buisData));
+    //localStorage.setItem('buisData', JSON.stringify(buisData));
     console.log(buisData);
     pushToArray(buisDataArray, buisData, "buisDataArray")
 
 })
-console.log(JSON.parse(localStorage.getItem('buisData')));
+console.log(JSON.parse(localStorage.getItem('buisDataArray')));

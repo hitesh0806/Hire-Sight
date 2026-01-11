@@ -1,6 +1,8 @@
 let dataArray = JSON.parse(localStorage.getItem('dataArray'));
-let name_ = document.querySelector('.js-user-name');
-let password_ = document.querySelector('.js-user-password');
+let buisDataArray = JSON.parse(localStorage.getItem('buisDataArray'));
+
+let name_ = document.querySelector('.js-name');
+let password_ = document.querySelector('.js-password');
 
 document.querySelector('.js-signInBtn').
 addEventListener('click', () => {
@@ -21,8 +23,22 @@ function login(){
                 found = true;
             }
         });
-        if(!found){
-            console.log('User not found.')
-        }
     }
+
+    if(buisDataArray){
+        buisDataArray.forEach((element) => {
+            if(Name === element.companyName && 
+                Password === element.password){
+                console.log('user match found');
+                localStorage.setItem('loggedInData', JSON.stringify(element));
+                window.location.href = 'buisHomePage.html';
+                found = true;
+            }
+        });
+    }
+
+    if(!found){
+        console.log('User not found.')
+    }
+
 }
