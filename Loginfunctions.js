@@ -18,7 +18,7 @@ function login(){
             if(Name === element.personalData.Name && 
                 Password === element.personalData.Password){
                 console.log('user match found');
-                localStorage.setItem('loggedInData', JSON.stringify(element));
+                localStorage.setItem('loggedInDataEmp', JSON.stringify(element));
                 window.location.href = 'empHomePage.html';
                 found = true;
             }
@@ -30,7 +30,7 @@ function login(){
             if(Name === element.companyName && 
                 Password === element.password){
                 console.log('user match found');
-                localStorage.setItem('loggedInData', JSON.stringify(element));
+                localStorage.setItem('loggedInDataBuis', JSON.stringify(element));
                 window.location.href = 'buisHomePage.html';
                 found = true;
             }

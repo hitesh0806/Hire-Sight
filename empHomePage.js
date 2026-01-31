@@ -1,7 +1,16 @@
-const loggedInData = JSON.parse(localStorage.getItem('logeedInData'));
+import { pushToArray } from "./saveData.js";
+
+const loggedInData = JSON.parse(localStorage.getItem('loggedInDataEmp'));
+let msg = JSON.parse(localStorage.getItem(loggedInData.personalData.Contact));
+if(msg){
+console.log(msg.company);
+}
 
 let html = ``;
 console.log(loggedInData);
+let connections = JSON.parse(localStorage.getItem('connections'))||0;
+let connectedCompanies = JSON.parse(localStorage.getItem('connectedCompanies')) || [];
+console.log(connectedCompanies);
 
 document.querySelector('.js-content').innerHTML = 
 `
@@ -9,9 +18,10 @@ document.querySelector('.js-content').innerHTML =
     <h2>Hire Sight</h2>
     <button class = 'js-profile-btn'>Profile</button>
     <div class = 'js-profile-section'></div>
-    <label>Connections:</label>
+    <label>Connections:${connections}</label>
     <h4>0</h4>
-    <button>Invitations</button>
+    <button class = 'js-invitations'>Invitations</button>
+    <div class = 'js-content-2'></div>
 </div>
 `;
 
@@ -51,3 +61,32 @@ const { Education_Qualification, Experience, PG, Role, UG, _10_, _10_2_ } = logg
     document.querySelector('.js-profile-section').innerHTML = html;
 });
 
+document.querySelector('.js-invitations').addEventListener('click', () => {
+    console.log('clicked');
+    console.log(loggedInData.personalData.Contact);
+    
+    console.log(msg.html);
+    document.querySelector('.js-content-2').innerHTML = msg.html;
+    load();
+})
+
+function load(){
+    document.querySelectorAll('.js-decision').forEach((button) => {
+        button.addEventListener("click", () => {
+            const btnValue = button.dataset.decision;
+            if(btnValue === 'yes'){
+                connections++;
+                console.log('clicked yes');
+                console.log(connections);
+                console.log(msg.company);
+                pushToArray(connectedCompanies ,msg.company ,'connectedCompanies');
+
+            }else{
+                console.log("clicked no");
+            }
+            localStorage.removeItem(loggedInData.personalData.Contact);
+            document.querySelector('.js-content-2').innerHTML = ``;
+            localStorage.setItem('connections',JSON.stringify(connections));
+        })
+    })
+}
