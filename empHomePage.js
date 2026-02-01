@@ -1,9 +1,16 @@
 import { pushToArray } from "./saveData.js";
 
+function loadPage(){
+
 const loggedInData = JSON.parse(localStorage.getItem('loggedInDataEmp'));
-let msg = JSON.parse(localStorage.getItem(loggedInData.personalData.Contact));
+
+let msg;
+
+function getInvitation(){
+msg = JSON.parse(localStorage.getItem(loggedInData.personalData.Contact));
 if(msg){
 console.log(msg.company);
+}
 }
 
 let html = ``;
@@ -62,15 +69,17 @@ const { Education_Qualification, Experience, PG, Role, UG, _10_, _10_2_ } = logg
 });
 
 document.querySelector('.js-invitations').addEventListener('click', () => {
+
+    getInvitation();
     console.log('clicked');
     console.log(loggedInData.personalData.Contact);
-    
     console.log(msg.html);
     document.querySelector('.js-content-2').innerHTML = msg.html;
-    load();
+    loadInvitation();
+
 })
 
-function load(){
+function loadInvitation(){
     document.querySelectorAll('.js-decision').forEach((button) => {
         button.addEventListener("click", () => {
             const btnValue = button.dataset.decision;
@@ -87,6 +96,11 @@ function load(){
             localStorage.removeItem(loggedInData.personalData.Contact);
             document.querySelector('.js-content-2').innerHTML = ``;
             localStorage.setItem('connections',JSON.stringify(connections));
+            loadPage();
         })
     })
 }
+
+}
+loadPage();
+
