@@ -91,19 +91,19 @@ createBtn.addEventListener('click', () => {
 
     document.querySelectorAll('.edu_details').forEach((input) => {
         const grade = input.dataset.grade;
-        const value = input.value;
+        const value_ = input.value;
 
         if(grade === '10'){
-            Data.educationalData._10_ = value;
+            Data.educationalData._10_ = value_;
         } 
         else if(grade === '10+2'){
-            Data.educationalData._10_2_ = value;
+            Data.educationalData._10_2_ = value_;
         } 
         else if(grade === 'UG'){
-            Data.educationalData.UG = value;
+            Data.educationalData.UG = value_;
         } 
         else if(grade === 'PG'){
-            Data.educationalData.PG = value;
+            Data.educationalData.PG = value_;
         }
 });
 

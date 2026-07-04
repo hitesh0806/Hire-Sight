@@ -3,7 +3,7 @@ import { pushToArray } from "./saveData.js";
 function loadPage(){
 
 const loggedInData = JSON.parse(localStorage.getItem('loggedInDataEmp'));
-
+console.log('JSON data - ' + localStorage.getItem('loggedInDataEmp'))
 let msg;
 
 function getInvitation(){
@@ -15,8 +15,10 @@ console.log(msg.company);
 
 let html = ``;
 console.log(loggedInData);
+
 let connections = JSON.parse(localStorage.getItem('connections'))||0;
 let connectedCompanies = JSON.parse(localStorage.getItem('connectedCompanies')) || [];
+
 console.log(connectedCompanies);
 
 document.querySelector('.js-content').innerHTML = 
@@ -25,8 +27,9 @@ document.querySelector('.js-content').innerHTML =
     <h2>Hire Sight</h2>
     <button class = 'js-profile-btn'>Profile</button>
     <div class = 'js-profile-section'></div>
-    <label>Connections:${connections}</label>
-    <h4>0</h4>
+    <br><label>Connections:${connections}</label><br>
+    <button class = 'js-connected-companies' >Connected companies</button>
+    <div class = 'js-company-content'></div>
     <button class = 'js-invitations'>Invitations</button>
     <div class = 'js-content-2'></div>
 </div>
@@ -77,6 +80,14 @@ document.querySelector('.js-invitations').addEventListener('click', () => {
     document.querySelector('.js-content-2').innerHTML = msg.html;
     loadInvitation();
 
+})
+
+document.querySelector('.js-connected-companies').addEventListener('click', () => {
+    let html = ``;
+    connectedCompanies.forEach((company) => {
+        html = html + `<h4>${company.companyName}</h4>`;
+    })
+    document.querySelector('.js-company-content').innerHTML = html;
 })
 
 function loadInvitation(){

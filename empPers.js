@@ -1,7 +1,7 @@
 //export let dataArray = [];
 export let Data = JSON.parse(localStorage.getItem('data')) ;
 if(!Data){
-    let Data = {
+    Data = {
         personalData : {
             Name : undefined,
             Contact : undefined,
